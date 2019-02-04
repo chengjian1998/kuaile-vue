@@ -3,6 +3,7 @@
     <img src="./assets/logo.png">
     <router-view/>
 	<p>123</p>
+	<p>123</p>
   </div>
 </template>
 
