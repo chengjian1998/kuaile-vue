@@ -4,6 +4,7 @@
     <router-view/>
 	<p>123</p>
 	<p>123</p>
+	<p>33333</p>
   </div>
 </template>
 
