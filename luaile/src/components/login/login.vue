@@ -1,27 +1,27 @@
 <template>
   <div class="login">
-      <div class="box">
-              <h2>用户登录</h2>
-    <el-form
-      ref="myform"
-      label-position="top"
-      :rules="myrules"
-      :model="loginObj"
-      status-icon
-      label-width="100px"
-      class="demo-ruleForm"
-    >
-      <el-form-item label="用户名" prop="username">
-        <el-input type="text" v-model="loginObj.username" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="密码" prop="password">
-        <el-input type="password" v-model="loginObj.password" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button class="mybtn" @click="login()" type="primary">登录</el-button>
-      </el-form-item>
-    </el-form>
-      </div>
+    <div class="box">
+      <h2>用户登录</h2>
+      <el-form
+        ref="myform"
+        label-position="top"
+        :rules="myrules"
+        :model="loginObj"
+        status-icon
+        label-width="100px"
+        class="demo-ruleForm"
+      >
+        <el-form-item label="用户名" prop="username">
+          <el-input type="text" v-model="loginObj.username" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="password">
+          <el-input type="password" v-model="loginObj.password" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button class="mybtn" @click="login()" type="primary">登录</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
   </div>
 </template>
 
@@ -36,22 +36,33 @@ export default {
         ],
         password: [{ required: true, message: "请输入密码", trigger: "blur" }]
       },
-      loginObj:{
-          username:'',
-          password:''
+      loginObj: {
+        username: "",
+        password: ""
       }
     };
   },
-  methods:{
-      login(){
-          console.log(this.loginObj)
-          this.$refs.myform.validate( async valid=>{
-              if(valid=true){
-                  var res = await this.$http.post('/login',this.loginObj)
-                  console.log(res)
-              }
-          })
-      }
+  methods: {
+    login() {
+      console.log(this.loginObj);
+      this.$refs.myform.validate(async valid => {
+        if ((valid = true)) {
+          var res = await this.$http.post("/login", this.loginObj);
+          console.log(res);
+          var { data, meta } = res.data;
+          if (meta.status === 200) {
+            this.$message({
+              message: meta.msg,
+              type: "success"
+            });
+            this.$router.push("/home")
+            window.localStorage.setItem('token', data.token)
+          }else{
+              this.$message.error(meta.msg)
+          }
+        }
+      });
+    }
   }
 };
 </script>
