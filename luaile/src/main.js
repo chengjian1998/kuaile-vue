@@ -6,10 +6,12 @@ import router from './router'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import myaxios from '@/assets/js/myaxios.js'
+import Bread from './layout/bread.vue'
 
 
 Vue.use(myaxios)
 Vue.use(Element)
+Vue.component(Bread.name, Bread)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

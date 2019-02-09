@@ -1,12 +1,12 @@
 <template>
   <el-col>
-    <el-menu default-active="2" class="el-menu-vertical-demo">
+    <el-menu :router="true"  default-active="2" class="el-menu-vertical-demo" unique-opened>
       <el-submenu v-for="data in DataList" :key="data.id" :index="data.path">
         <template slot="title">
           <i class="el-icon-location"></i>
           {{data.authName}}
         </template>
-        <el-menu-item v-for="data2 in data.children" :key="data2.id" index="data2.path">
+        <el-menu-item v-for="data2 in data.children" :key="data2.id" :index="'/'+data2.path">
           <i class="el-icon-menu"></i>
           {{data2.authName}}
         </el-menu-item>
