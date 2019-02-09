@@ -1,10 +1,14 @@
 <template>
   <el-container>
     <el-header>
+        <!-- 头部 -->
       <Headers/>
     </el-header>
     <el-container>
-        <SideBar/>
+      <el-aside style="width: 200px;">
+          <!-- 侧边栏 -->
+      <SideBar/>
+      </el-aside>
       <el-main>Main</el-main>
     </el-container>
   </el-container>
@@ -19,57 +23,24 @@ export default {
     SideBar
   },
   data() {
-    return {
-    };
+    return {};
   },
-  methods: {
-
-  },
-  mounted() {
-  }
+  methods: {},
+  mounted() {}
 };
 </script>
 
 <style>
-.el-header,
-.el-footer {
-  background-color: #b3c0d1;
-  color: #333;
-  text-align: center;
-  line-height: 60px;
-}
-
-.el-aside {
-  background-color: #d3dce6;
-  color: #333;
-  text-align: center;
-  line-height: 200px;
-}
-
-.el-main {
-  background-color: #e9eef3;
-  color: #333;
-  text-align: center;
-  line-height: 160px;
-}
-
-body > .el-container {
-  margin-bottom: 40px;
-}
-.is-vertical {
-  height: 100%;
-}
-
-.bg-purple-light h2 {
-  color: #fff;
-}
-.bg-purple a {
-  color: #fff;
-}
 .el-container {
   height: 100%;
 }
-.el-submenu__title {
-  text-align: left;
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body, #app {
+    height: 100%;
 }
 </style>
