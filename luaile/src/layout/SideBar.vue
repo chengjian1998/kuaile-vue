@@ -17,27 +17,26 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       DataList: []
-    };
+    }
   },
   methods: {
-    async getRightsList() {
-      var rse = await this.$http.get(`/menus`, {});
-      var { meta, data } = rse.data;
-      console.log(data);
+    async getRightsList () {
+      var rse = await this.$http.get(`/menus`, {})
+      var { meta, data } = rse.data
       if (meta.status === 200) {
-        this.DataList = data;
+        this.DataList = data
       } else {
-        this.$message.error(meta.msg);
+        this.$message.error(meta.msg)
       }
     }
   },
-  mounted() {
-    this.getRightsList();
+  mounted () {
+    this.getRightsList()
   }
-};
+}
 </script>
 
 <style>

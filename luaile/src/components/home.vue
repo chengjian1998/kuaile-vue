@@ -17,26 +17,25 @@
 </template>
 
 <script>
-import Headers from "@/layout/headers.vue";
-import SideBar from "@/layout/SideBar.vue";
+import Headers from '@/layout/headers.vue'
+import SideBar from '@/layout/SideBar.vue'
 export default {
   components: {
     Headers,
     SideBar
   },
-  data() {
-    return {};
+  data () {
+    return {}
   },
   methods: {},
-  mounted() {}
-};
+  mounted () {}
+}
 </script>
 
 <style>
 .el-container {
   height: 100%;
 }
-
 
 * {
     margin: 0;

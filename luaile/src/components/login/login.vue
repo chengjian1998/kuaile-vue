@@ -27,44 +27,44 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       myrules: {
         username: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
-          { min: 3, max: 10, message: "长度在 3 到 10 个字符", trigger: "blur" }
+          { required: true, message: '请输入用户名', trigger: 'blur' },
+          { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
         ],
-        password: [{ required: true, message: "请输入密码", trigger: "blur" }]
+        password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
       },
       loginObj: {
-        username: "",
-        password: ""
+        username: '',
+        password: ''
       }
-    };
+    }
   },
   methods: {
-    login() {
-      console.log(this.loginObj);
+    login () {
+      console.log(this.loginObj)
       this.$refs.myform.validate(async valid => {
-        if ((valid = true)) {
-          var res = await this.$http.post("/login", this.loginObj);
-          console.log(res);
-          var { data, meta } = res.data;
+        if (valid) {
+          var res = await this.$http.post('/login', this.loginObj)
+          console.log(res)
+          var { data, meta } = res.data
           if (meta.status === 200) {
             this.$message({
               message: meta.msg,
-              type: "success"
-            });
-            this.$router.push("/home")
+              type: 'success'
+            })
+            this.$router.push('/home')
             window.localStorage.setItem('token', data.token)
-          }else{
-              this.$message.error(meta.msg)
+          } else {
+            this.$message.error(meta.msg)
           }
         }
-      });
+      })
     }
   }
-};
+}
 </script>
 
 <style>
